@@ -1,0 +1,218 @@
+<html<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<meta name="language" content="en" />
+		<meta name="author" content="Trevor Elliott" />
+		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+		<title>
+			Title
+		</title>
+		<link rel="stylesheet" type="text/css" media="screen and print" href="css/normalize.css" />
+
+	</head>
+	<style>
+		html, body {height:100%;}
+		html, body, div, span, canvas { margin:0; padding:0; }
+
+		.wrapper input {
+			display:none;
+			width:100%;
+			height:600px;
+		}
+
+		article {
+			width:100%;
+			height:600px;
+			overflow:hidden;
+			position: relative;
+			font-size:.7em;
+			background-color: #F8F8F8;
+		}
+
+		.arrow {
+			background:#cc0000 url(https://googledrive.com/host/0B5Ubvdjb2dQUbERvaHpUTkdUVkk/images/left.png) no-repeat center center;
+			cursor:pointer;
+			display:none;
+			height:30px;
+			top:50%;
+			opacity:0.3;
+			position:absolute;
+			right:90%;
+			width:30px;
+			z-index:99;
+
+			/* css3 transition */
+			-webkit-transition:opacity linear 0.3s;
+			-moz-transition:opacity linear 0.3s;
+			-o-transition:opacity linear 0.3s;
+			-ms-transition:opacity linear 0.3s;
+			transition:opacity linear 0.3s;
+			border-radius:50% 50% 50% 50%;
+			box-shadow:0 1px 2px #AF2C19 inset;
+		}
+
+		.arrow:hover {
+			opacity:0.9;
+		}
+
+		.slide_1:checked ~ .arrow.c2, .slide_2:checked ~ .arrow.c3,
+		.slide_3:checked ~ .arrow.c4{
+		   background-image:url(https://googledrive.com/host/0B5Ubvdjb2dQUbERvaHpUTkdUVkk/images/right.png);
+		   display:block;
+		   right:2%;
+		}
+
+		.slide_2:checked ~ .arrow.c1, .slide_3:checked ~ .arrow.c2,
+		.slide_4:checked ~ .arrow.c3{
+		   background-image:url(https://googledrive.com/host/0B5Ubvdjb2dQUbERvaHpUTkdUVkk/images/left.png);
+		   display:block;
+		}
+
+
+
+		.slides .slide-container{
+			height:100%;
+			list-style:none;
+			position:relative;
+			top:0;
+		}
+
+		.slides .slide-container .slide {
+			height:100%;
+			width:100%;
+			opacity:1;
+			position:absolute;
+			top:0;
+			left:105%;
+		}
+
+		.slide_1:checked ~ .slides .slide-container #slide1,
+		.slide_2:checked ~ .slides .slide-container #slide2,
+		.slide_3:checked ~ .slides .slide-container #slide3,
+		.slide_4:checked ~ .slides .slide-container #slide4
+		{
+			opacity:1;
+		}
+		
+		section, .page #cover {
+			width:100%;
+			height:100%;
+			overflow:hidden;
+		}
+		
+		.slide_1:checked ~ .slides header {
+			display:none;   
+		}
+
+		.slide_1:checked ~ .slides .slide-container #slide1{
+			left:0;
+			background:#FFcccc;    
+		}
+
+		.slide_2:checked ~ .slides .slide-container #slide2{
+			left:0;
+			background:#cc6666;
+		}
+
+		.slide_3:checked ~ .slides .slide-container #slide3{
+			left:0;
+			background:#646464;
+		}
+
+		.slide_4:checked ~ .slides .slide-container #slide4{
+			left:0;
+			background:#FF5555;
+		}
+
+		.slide_5:checked ~ .slides .slide-container #slide5{
+			left:0;
+		}
+
+		.slide_6:checked ~ .slides .slide-container #slide6{
+			left:0;
+		}
+
+		.slide_7:checked ~ .slides .slide-container #slide7{
+			left:0;
+		}
+	</style>
+	<body>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="https://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+		<div class="wrapper">
+			<input id="r_1" type="radio" name="p" class="slide_1" checked="checked" /> <!-- hidden radios -->
+			<input id="r_2" type="radio" name="p" class="slide_2" />
+			<input id="r_3" type="radio" name="p" class="slide_3" />
+			<input id="r_4" type="radio" name="p" class="slide_4" />
+			<input id="r_5" type="radio" name="p" class="slide_5" />
+			<input id="r_6" type="radio" name="p" class="slide_6" />
+			<input id="r_7" type="radio" name="p" class="slide_7" />
+			<input id="r_8" type="radio" name="p" class="slide_8" />
+			<input id="r_9" type="radio" name="p" class="slide_9" />
+			<input id="r_10" type="radio" name="p" class="slide_10" />
+			<input id="r_11" type="radio" name="p" class="slide_11" />
+			<input type="checkbox" id="nav-handler">
+			<label for="r_1" class="arrow c1"></label> <!-- controls -->
+			<label for="r_2" class="arrow c2"></label>
+			<label for="r_3" class="arrow c3"></label>
+			<label for="r_4" class="arrow c4"></label>
+			<label for="r_5" class="arrow c5"></label>
+			<label for="r_6" class="arrow c6"></label>
+			<label for="r_7" class="arrow c7"></label>
+			<label for="r_8" class="arrow c8"></label>
+			<label for="r_9" class="arrow c9"></label>
+			<label for="r_10" class="arrow c10"></label>
+			<label for="r_11" class="arrow c11"></label>
+						
+			<article id="chocolate-cake" class="slides">
+				<div class="slide-container">
+					<div class="slide" id="slide1">
+						<section class="page" id="cover">
+							Slide 1
+						</section>
+					</div>	
+					<div class="slide" id="slide2">
+						<section class="page" id="cover2">
+							Slide 2
+						</section>
+					</div>
+					<div class="slide" id="slide3">
+						<section class="page" id="ingredients">	
+							Slide 3
+						</section>
+					</div>
+					<div class="slide" id="slide4">
+						<section class="page" id="directions"> 
+							Slide 4
+						</section>
+					</div>
+				</div>
+			</article>
+		</div>
+		<script>
+			$(document).ready(function() {
+				$("#slide1").swipeleft(function(event){
+					$('input:radio[class=slide_2]').prop("checked", true);
+				});
+				$("#slide2").swiperight(function(event){
+					$('input:radio[class=slide_1]').prop("checked", true);
+				});
+				$("#slide2").swipeleft(function(event){
+					$('input:radio[class=slide_3]').prop("checked", true);
+				});
+				$("#slide3").swiperight(function(event){
+					$('input:radio[class=slide_2]').prop("checked", true);
+				});
+				$("#slide3").swipeleft(function(event){
+					$('input:radio[class=slide_4]').prop("checked", true);
+				});
+				$("#slide4").swiperight(function(event){
+					$('input:radio[class=slide_3]').prop("checked", true);
+				});
+			});
+		</script>
+	</body>
+</html>		
